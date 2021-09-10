@@ -1,20 +1,60 @@
 import './App.css';
+import React, { useState, useEffect, useReducer } from 'react';
 import restaurant from "./restaurant.jpg";
 
 
 
+// -------------useReducer------------------------
 
-// -------------useState Hook------------------------
+function App() {
 
-function App({ authorized }) {
+  const [checked, toggle] = useReducer(
+    checked => !checked,
+    false);
+
 
   return (
     <>
-      nothing
+      <input
+        type="checkbox"
+        value={checked}
+        onChange={toggle}></input>
+      <p>{checked ? "checked" : "not checked"}</p>
     </>
   )
 }
 
+
+
+
+// -------------useState Hook and useEffect------------------------
+/*
+function App({ authorized }) {
+
+  const [emotion, setEmotion] = useState("happy");
+  const [secondary, setSecondary] = useState("tired");
+
+  useEffect(() => {
+    console.log(`It's ${emotion} around here`);
+  }, [emotion])
+
+  useEffect(() => {
+    console.log(`It's ${secondary} around here`)
+  }, [secondary])
+
+
+  return (
+    <>
+      <h1>Current emotion is {emotion} and {secondary}</h1>
+      <button onClick={() => setEmotion("happy")}>Make Happy</button>
+      <button onClick={() => setEmotion("frustrate")}>Frustrate</button>
+      <button onClick={() => setEmotion("enthusiastic")}>Enthuse</button>
+
+      <button onClick={() => setSecondary("crabby")}>Make crabby</button>
+    </>
+  )
+}
+*/
 
 
 // -------------Conditional rendering-----------------
